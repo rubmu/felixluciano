@@ -57,7 +57,7 @@ export default
 #mega-header
   width: 100%
   height: 100vh
-  background: url('../../public/header-cover.jpg') no-repeat center / cover
+  background: url('~public/header-cover.jpg') no-repeat center / cover
 
   .button
     filter: grayscale(1)
