@@ -12,7 +12,7 @@
           v-icon(size='24px') mdi-chevron-up
 
       v-card-actions.pb-5.justify-center
-        img.ml-4(src='public/typo.svg' height='20')
+        img(src='public/typo.svg' height='20')
 </template>
 
 

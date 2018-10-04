@@ -1,21 +1,34 @@
 <template lang='pug'>
 
-#mega-header.grey.darken-4
-  v-layout(column justify-space-between align-center fill-height)
+#mega-header.grey.darken-4: v-container.py-0(fill-height)
+  v-layout(row wrap justify-center align-space-between)
 
-    #buttons.mt-3: v-layout(justify-center align-center)
-      v-icon.mx-3(color='grey') mdi-minus
+    v-flex(xs12)
+      v-layout(justify-center)
 
-      template(v-for='button in buttons')
-        v-btn.button.mx-3(icon outline color='accent' v-bind="{[`${button.size}`]: true}")
-          v-icon(:small="button.size === 'small'" color='grey lighten-3') mdi-{{ button.icon }}
+        v-flex(xs11 sm6 md5 lg4 xl3)
+          v-layout(justify-space-between align-center)
 
-      v-icon.mx-3(color='grey') mdi-minus
+            v-icon.hidden-xs-only.mt-3(color='grey') mdi-minus
 
-    img(src='public/logotypo.svg' height='300')
+            template(v-for='button in buttons')
+              v-btn.button.mx-0.mt-3(icon outline color='accent' v-bind="{[`${button.size}`]: true}")
+                v-icon(:small="button.size === 'small'" color='grey lighten-3') mdi-{{ button.icon }}
 
-    v-btn#btn(icon large @click='scrollDown').mb-3
-      v-icon(large color='white') mdi-chevron-down
+            v-icon.hidden-xs-only.mt-3(color='grey') mdi-minus
+
+
+    v-flex(xs12)
+      v-layout(fill-height justify-center align-center)
+
+        img(src='public/logotypo.svg' height='300')
+
+
+    v-flex(xs12)
+      v-layout(fill-height justify-center align-end)
+
+        v-btn#btn(icon large @click='scrollDown').mb-3
+          v-icon(large color='white') mdi-chevron-down
 </template>
 
 

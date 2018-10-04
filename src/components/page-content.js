@@ -29,9 +29,7 @@
 
       v-tab-item#tab--contact
         .display-2(height='2000') Contact
-</template>
-
-
+</template>;
 
 <script lang='coffee'>
 
@@ -54,13 +52,11 @@ export default
       @$vuetify.goTo '#toolbar-replacer',
         duration: 500
 
-</script>
-
-
+</script>;
 
 <style lang='sass'>
 
   .v-tabs__items
     height: 2000px
 
-</style>
+</style>;
