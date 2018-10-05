@@ -1,18 +1,24 @@
 <template lang='pug'>
 
-  v-footer(height='auto')
-    v-card.flex(flat dark tile color='grey darken-4')
+  v-footer(dark height='auto' color='grey darken-4')
+    v-container
+      v-layout(row wrap)
 
-      v-card-title.pt-4
-        span.subheading Made with
-          span.red--text.px-1 ❤
-        v-spacer
+        v-flex(xs12)
+          v-layout(row wrap align-center)
 
-        v-btn.mx-3(dark icon large @click="$vuetify.goTo('#toolbar-replacer', {duration: 1000})")
-          v-icon(size='24px') mdi-chevron-up
+            span.subheading Made with
+              span.red--text.px-1 ❤
+            v-spacer
 
-      v-card-actions.pb-5.justify-center
-        img(src='public/typo.svg' height='20')
+            v-btn.mx-3(dark icon large @click="$vuetify.goTo('#toolbar-replacer', {duration: 1000})")
+              v-icon(size='24px') mdi-chevron-up
+
+
+        v-flex.py-4(xs12)
+          v-layout(justify-center)
+
+            img(src='public/typo.svg' height='20')
 </template>
 
 

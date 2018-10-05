@@ -11,8 +11,8 @@
 
             v-icon.hidden-xs-only.mt-3(color='grey') mdi-minus
 
-            template(v-for='button in buttons')
-              v-btn.button.mx-0.mt-3(icon outline color='accent' v-bind="{[`${button.size}`]: true}")
+            template(v-for='button in buttons' v-once)
+              v-btn.button.mx-0.mt-3(icon outline target='_blank' color='accent' :href='button.href' v-bind="{[`${button.size}`]: true}")
                 v-icon(:small="button.size === 'small'" color='grey lighten-3') mdi-{{ button.icon }}
 
             v-icon.hidden-xs-only.mt-3(color='grey') mdi-minus
@@ -45,15 +45,19 @@ export default
       ,
         size: 'medium'
         icon: 'instagram'
+        href: 'https://instagram.com/felix._.luciano'
       ,
         size: 'large'
         icon: 'github-circle'
+        href: 'https://github.com/felixLuciano'
       ,
         size: 'medium'
         icon: 'codepen'
+        href: 'https://codepen.io/FelixLuciano'
       ,
         size: 'small'
         icon: 'at'
+        href: 'mailto:luciano.felix.555@hotmail.com'
     ]
 
   methods:

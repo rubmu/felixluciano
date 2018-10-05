@@ -2,40 +2,44 @@
   section
 
     v-toolbar#toolbar-replacer(flat v-show='fixed')
-    v-toolbar#toolbar(flat :fixed='fixed' v-scroll="onScroll" color='grey darken-4')
+    v-toolbar#toolbar(flat dark color='grey darken-4' v-scroll="onScroll" :fixed='fixed')
 
-      v-toolbar-side-icon
-        img(src='public/logo.svg' height='28')
+      v-toolbar-side-icon(@click='scrollTop')
+        img(height='28' src='public/logo.svg')
+
 
       v-toolbar-title.hidden-xs-only.ml-2
         v-layout(fill-height align-center)
-          img(src='public/typo.svg' height='20')
+          img(height='20' src='public/typo.svg')
+
+
+      v-divider.mx-3.hidden-xs-only(vertical inset)
+
 
       v-toolbar-items
         v-layout(align-center)
-          v-divider.mx-3.hidden-xs-only(vertical inset dark)
-          v-tabs(dark v-model='tabs' centered color='transparent' slider-color='primary')
+
+          v-tabs(color='transparent' slider-color='primary' v-model='tabs' )
             v-tab(@click='openTab') Featured
             v-tab(@click='openTab') About me
-            v-tab(@click='openTab') Contact
 
 
     v-tabs-items#tabs(v-model='tabs')
       v-tab-item#tab--featured
-        .display-2(height='2000') Featured
+        tab--featured
 
       v-tab-item#tab--about-me
-        .display-2(height='2000') About me
-
-      v-tab-item#tab--contact
-        .display-2(height='2000') Contact
+        tab--about-me
 </template>
 
 
 
 <script lang='coffee'>
 
-import * as $ from 'jquery'
+import $ from 'jquery'
+
+import tabFeatured from './tab--featured.vue'
+import tabAboutMe from './tab--about-me.vue'
 
 export default
   name: 'page-content'
@@ -50,9 +54,17 @@ export default
     onScroll: (e) ->
       @fixed = $(window).scrollTop() >= $('#mega-header').height()
 
+    scrollTop: ->
+      @$vuetify.goTo 0,
+        duration: 1000
+
     openTab: (e) ->
       @$vuetify.goTo '#toolbar-replacer',
         duration: 500
+
+  components:
+    'tab--featured': tabFeatured
+    'tab--about-me': tabAboutMe
 
 </script>
 
@@ -60,7 +72,7 @@ export default
 
 <style lang='sass'>
 
-  .v-tabs__items
-    height: 2000px
+.tab-wrapper
+  min-height: calc(100vh - 64px)
 
 </style>
