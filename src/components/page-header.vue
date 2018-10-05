@@ -1,34 +1,40 @@
 <template lang='pug'>
 
-#mega-header.grey.darken-4: v-container.py-0(fill-height)
-  v-layout(row wrap justify-center align-space-between)
+#mega-header.grey.darken-4
+  .cover-background
+    v-img(src='public/header-cover.jpg' lazy-src='public/header-cover.jpg' width='100%' height='100%')
+      v-layout(slot='placeholder' fill-height align-end justify-end)
+        v-progress-circular.ma-4(indeterminate size='50' color='grey lighten-5')
 
-    v-flex(xs12)
-      v-layout(justify-center)
+  v-container.header-content(fill-height)
+    v-layout(row wrap justify-center align-space-between)
 
-        v-flex(xs11 sm6 md5 lg4 xl3)
-          v-layout(justify-space-between align-center)
+      v-flex(xs12)
+        v-layout(justify-center)
 
-            v-icon.hidden-xs-only.mt-3(color='grey') mdi-minus
+          v-flex(xs11 sm6 md5 lg4 xl3)
+            v-layout(justify-space-between align-center)
 
-            template(v-for='button in buttons' v-once)
-              v-btn.button.mx-0.mt-3(icon outline target='_blank' color='accent' :href='button.href' v-bind="{[`${button.size}`]: true}")
-                v-icon(:small="button.size === 'small'" color='grey lighten-3') mdi-{{ button.icon }}
+              v-icon.hidden-xs-only.mt-3(color='grey lighten-2') mdi-minus
 
-            v-icon.hidden-xs-only.mt-3(color='grey') mdi-minus
+              template(v-for='button in buttons' v-once)
+                v-btn.button.mx-0.mt-3(dark icon outline target='_blank' color='grey' :href='button.href' v-bind="{[`${button.size}`]: true}")
+                  v-icon(color='white' :small="button.size === 'small'") mdi-{{ button.icon }}
 
-
-    v-flex(xs12)
-      v-layout(fill-height justify-center align-center)
-
-        img(src='public/logotypo.svg' height='300')
+              v-icon.hidden-xs-only.mt-3(color='grey lighten-2') mdi-minus
 
 
-    v-flex(xs12)
-      v-layout(fill-height justify-center align-end)
+      v-flex(xs12)
+        v-layout(fill-height justify-center align-center)
 
-        v-btn#btn(icon large @click='scrollDown').mb-3
-          v-icon(large color='white') mdi-chevron-down
+          img(src='public/logotypo.svg' height='300')
+
+
+      v-flex(xs12)
+        v-layout(fill-height justify-center align-end)
+
+          v-btn#btn(dark icon large @click='scrollDown').mb-3
+            v-icon(large color='white') mdi-chevron-down
 </template>
 
 
@@ -74,12 +80,13 @@ export default
 #mega-header
   width: 100%
   height: 100vh
-  background: url('~public/header-cover.jpg') no-repeat center / cover
 
-  .button
-    filter: grayscale(1)
+  .header-content
+    position: relative
+    top: -100vh
 
-    &:hover
-      filter: grayscale(0)
+  .cover-background
+    width: 100%
+    height: 100vh
 
 </style>
