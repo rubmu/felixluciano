@@ -3,7 +3,7 @@
   v-container.tab-wrapper.py-5
     v-layout(justify-center)
 
-      v-flex.mt-4(xs8)
+      v-flex.mt-4(xs12 md8)
         v-layout(row wrap)
 
           v-flex(xs12)
@@ -36,7 +36,7 @@
           v-flex(xs12)
             v-layout(justify-center)
 
-              v-flex(xs10)
+              v-flex(xs12 sm11 md10)
                 v-layout(row wrap justify-space-between align-center)
 
                   v-flex.pl-3.pt-4.pb-2(xs12)
