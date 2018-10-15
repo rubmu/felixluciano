@@ -47,20 +47,41 @@ export default
         href: 'https://github.com/FelixLuciano/electron-builder'
         iconSource: 'https://github.com/FelixLuciano/electron-builder/raw/master/public/icon.svg?sanitize=true'
       ,
+        type: 'post'
+        title: 'Stickman'
+        subtitle: 'Game'
+        headIcon: 'codepen'
+        href: 'https://codepen.io/FelixLuciano/pen/xpWwGm'
+        iconSource: 'https://res.cloudinary.com/tecice/image/upload/v1539569650/PROJECT:%20Github%20portifolio/Stickman.svg'
+      ,
         type: 'photo'
         title: 'Glass bottle'
         subtitle: 'Photography'
         headIcon: 'instagram'
         href: 'https://www.instagram.com/p/BhRqgVSnkyZB_O2zaGRZofhCPSQ2Q9TY4PTlqk0'
-        photoSource: 'https://instagram.fgru5-1.fna.fbcdn.net/vp/1194c19bf475256f7d6999478a60e388/5C4E87F2/t51.2885-15/sh0.08/e35/s640x640/29738018_799023720302876_3778787771200569344_n.jpg'
+        photoSource: 'https://res.cloudinary.com/tecice/image/upload/v1539570252/PROJECT:%20Github%20portifolio/glass-bottle-cover.jpg'
+      ,
+        type: 'post'
+        title: 'Super Checkbox Challenge'
+        subtitle: 'Game'
+        headIcon: 'codepen'
+        href: 'https://codepen.io/FelixLuciano/pen/zaWwVG'
+        iconSource: 'https://res.cloudinary.com/tecice/image/upload/SuperCheckboxChallenge-logo.png'
       ,
         type: 'photo'
         title: 'Dreaming'
         subtitle: 'audio-visual'
         headIcon: 'instagram'
-        badgeIcon: 'video'
+        badgeIcon: 'filmstrip'
         href: 'https://www.instagram.com/p/Bhuspe5HXokj-XxOB8AzJNo1M5IXlIBWWJU0KA0'
-        photoSource: 'https://instagram.fgru5-1.fna.fbcdn.net/vp/b895dab7e7c887f2ac3332367a58b241/5BBB9934/t51.2885-15/e35/30080010_162574391099598_2280605523684360192_n.jpg'
+        photoSource: 'https://res.cloudinary.com/tecice/image/upload/v1539570252/PROJECT:%20Github%20portifolio/dreaming-cover.jpg'
+      ,
+        type: 'post'
+        title: 'Block generator'
+        subtitle: 'Game'
+        headIcon: 'codepen'
+        href: 'https://codepen.io/FelixLuciano/pen/vZKKBb'
+        iconSource: 'https://res.cloudinary.com/tecice/image/upload/v1539570715/PROJECT:%20Github%20portifolio/block-generator-icon.png'
     ]
 
   components:

@@ -16,7 +16,7 @@ v-flex(xs12 sm6 md4 lg3)
         v-flex(xs7)
           v-layout(fill-height justify-center align-center)
 
-            v-responsive(:aspect-ratio='2/1')
+            v-responsive.px-2(:aspect-ratio='2/1')
               v-img(contain height='100%' :aspect-ratio='2/1' :src='post.iconSource' :lazy-src='post.iconSource')
 
 
