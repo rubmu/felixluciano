@@ -17,18 +17,19 @@
 
 
       v-toolbar-items
-        v-layout(align-center)
+        v-flex(d-flex align-center)
 
-          v-tabs(color='transparent' slider-color='primary' v-model='tabs' )
-            v-tab(@click='openTab') Featured
-            v-tab(@click='openTab') About me
+          v-tabs(color='transparent' slider-color='primary' v-model='toolbarTabs')
+            v-tab(@click="openTab('featured')") Featured
+            v-tab(@click="openTab('about-me')") About me
 
 
-    v-tabs-items#tabs(v-model='tabs')
-      v-tab-item#tab--featured
+
+    v-window(v-model='tabs' touchless)
+      v-window-item(value='tab--featured')
         tab--featured
 
-      v-tab-item#tab--about-me
+      v-window-item(value='tab--about-me')
         tab--about-me
 </template>
 
@@ -47,6 +48,7 @@ export default
   data: ->
     fixed: false
 
+    toolbarTabs: 0
     tabs: 'tab--featured'
 
 
@@ -58,9 +60,11 @@ export default
       @$vuetify.goTo 0,
         duration: 1000
 
-    openTab: (e) ->
+    openTab: (tabName) ->
       @$vuetify.goTo '#toolbar-replacer',
         duration: 500
+
+      @tabs = "tab--#{tabName}"
 
   components:
     'tab--featured': tabFeatured

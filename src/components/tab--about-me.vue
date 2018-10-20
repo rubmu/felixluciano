@@ -1,7 +1,7 @@
 <template lang='pug'>
 
   v-container.tab-wrapper.py-5
-    v-layout(justify-center)
+    v-layout(fill-height justify-center align-center)
 
       v-flex.mt-4(xs12 md8)
         v-layout(row wrap)
