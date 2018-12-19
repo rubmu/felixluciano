@@ -1,18 +1,26 @@
-# felixluciano.github.io
+<div align='center'>
+  <img src='public/logo.png'>
+  <h1 class='repo-title'>felixluciano.github.io</h1>
+  <span>My humble personal github page</span>
+</div>
+<br/>
 
-> Profile page
 
 ## Build Setup
 
 ``` bash
-# install dependencies
-npm install
+$ npm install
+  Install dependencies.
 
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
+$ npm start
+  Open project interface
 ```
 
+
+## License
+
+MIT
+
+
+<br/>
 For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).

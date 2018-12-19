@@ -1,31 +1,44 @@
 <template lang='pug'>
 
   v-app
-    pageHeader
+    page-header
 
-    pageContent
+    main-toolbar
 
-    pageFooter
+    section#main-router-view
+      transition(name='slide-y-reverse-transition' mode='out-in')
+        router-view
+
+    page-footer
+  //--
 </template>
 
 
 
 <script lang='coffee'>
 
-import pageHeader from './components/page-header.vue'
-import pageFooter from './components/page-footer.vue'
-import pageContent from './components/page-content.vue'
+  import pageHeader from '@/components/page-header.vue'
+  import mainToolbar from '@/components/main-toolbar.vue'
+  import pageFooter from '@/components/page-footer.vue'
 
-export default
-  name: 'profile-page'
+  export default
+    name: 'luciano-felix'
 
-  mounted: ->
-    @$vuetify.theme.primary = '#673AB7'
-    @$vuetify.theme.accent = '#AA00FF'
 
-  components: {
-    pageHeader, pageContent, pageFooter
-  }
+    watch:
+      $route: ->
+        title = 'Luciano Felix'
+
+        if @$route.path != '/'
+          title += " - #{@$route.name}"
+
+        document.title = title
+
+
+    components:
+      'page-header': pageHeader
+      'main-toolbar': mainToolbar
+      'page-footer': pageFooter
 
 </script>
 
@@ -33,10 +46,42 @@ export default
 
 <style lang='sass'>
 
-html
-  overflow: auto
+  html.overflow-y-hidden
+    overflow-y: auto !important
 
-  .theme--light.application
-    background: #ECEFF1
+  body
+    cursor: default
+
+
+  #main-router-view
+    min-height: calc(100vmin - 48px)
+
+
+  .theme--light.v-expansion-panel
+    .v-expansion-panel__container
+      .v-expansion-panel__header
+        .v-expansion-panel__header__icon
+          .v-icon
+            color: #000 !important
+
+
+  .theme--light.v-pagination
+    .v-pagination__navigation, .v-pagination__item, .v-pagination__item--active
+      box-shadow: none
+
+    .v-pagination__item
+      outline: none
+      border-radius: 2px
+      font-weight: 500
+
+      &:not(.v-pagination__item--active)
+        background-color: transparent !important
+
+    .v-pagination__navigation
+      background-color: transparent !important
+      outline: none
+
+      .v-icon
+        color: #000 !important
 
 </style>

@@ -1,0 +1,14 @@
+[
+  {
+    "title": "LUCIANO FELIX",
+    "description": "My personal portfolio page project.",
+    "url": "https://github.com/FelixLuciano/felixluciano.github.io",
+    "src": "https://res.cloudinary.com/tecice/UG9ydGlmb2xpbw/cHJvamVjdHM/aVNueLlgpHnruxoEZM.jpg"
+  },
+  {
+    "title": "Vuefity-simple",
+    "description": "Vue template with Webpack 4, vuetify, Pug, SASS, Coffeescript and Material icons.",
+    "url": "https://github.com/FelixLuciano/vuetify-simple",
+    "src": "https://res.cloudinary.com/tecice/UG9ydGlmb2xpbw/cHJvamVjdHM/VnVldGlmeVNpbXBsZQ.jpg"
+  }
+]

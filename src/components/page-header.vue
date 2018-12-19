@@ -1,40 +1,24 @@
 <template lang='pug'>
 
-#mega-header.grey.darken-4
-  .cover-background
-    v-img(src='public/header-cover.jpg' lazy-src='public/header-cover.jpg' width='100%' height='100%')
+  header.grey.darken-4
+    v-img(:src='coverSrc' :lazy-src='coverSrc' width='100%' height='100%')
+
+      v-container(fill-height)
+        v-layout(column justify-center)
+
+          v-spacer
+
+          v-flex(xs10 d-flex align-center)
+            img(src='public/logotypo.svg' height='300')
+
+          v-flex.text-xs-center(xs1)
+            v-btn#btn(dark icon large @click='scrollDown')
+              v-icon(large color='white') mdi-chevron-down
+
+
       v-layout(slot='placeholder' fill-height align-end justify-end)
         v-progress-circular.ma-4(indeterminate size='50' color='grey lighten-5')
-
-  v-container.header-content(fill-height)
-    v-layout(row wrap justify-center align-space-between)
-
-      v-flex(xs12)
-        v-layout(justify-center)
-
-          v-flex(xs11 sm6 md5 lg4 xl3)
-            v-layout(justify-space-between align-center)
-
-              v-icon.hidden-xs-only.mt-3(color='grey lighten-2') mdi-minus
-
-              template(v-for='button in buttons' v-once)
-                v-btn.button.mx-0.mt-3(dark icon outline target='_blank' color='grey' :href='button.href' v-bind="{[`${button.size}`]: true}")
-                  v-icon(color='white' :small="button.size === 'small'") mdi-{{ button.icon }}
-
-              v-icon.hidden-xs-only.mt-3(color='grey lighten-2') mdi-minus
-
-
-      v-flex(xs12)
-        v-layout(fill-height justify-center align-center)
-
-          img(src='public/logotypo.svg' height='300')
-
-
-      v-flex(xs12)
-        v-layout(fill-height justify-center align-end)
-
-          v-btn#btn(dark icon large @click='scrollDown').mb-3
-            v-icon(large color='white') mdi-chevron-down
+  //--
 </template>
 
 
@@ -44,31 +28,16 @@
 export default
   name: 'page-header'
 
+
   data: ->
-    buttons: [
-        size: 'small'
-        icon: 'account-circle'
-      ,
-        size: 'medium'
-        icon: 'instagram'
-        href: 'https://instagram.com/felix._.luciano'
-      ,
-        size: 'large'
-        icon: 'github-circle'
-        href: 'https://github.com/felixLuciano'
-      ,
-        size: 'medium'
-        icon: 'codepen'
-        href: 'https://codepen.io/FelixLuciano'
-      ,
-        size: 'small'
-        icon: 'at'
-        href: 'mailto:luciano.felix.555@hotmail.com'
-    ]
+    windowHeight: window.innerHeight
+
+    coverSrc: 'https://res.cloudinary.com/tecice/UG9ydGlmb2xpbw/aGVhZGVyQ292ZXI.jpg'
+
 
   methods:
     scrollDown: ->
-      @$vuetify.goTo '#toolbar',
+      @$vuetify.goTo window.innerHeight,
         duration: 1000
 
 </script>
@@ -77,16 +46,7 @@ export default
 
 <style lang='sass'>
 
-#mega-header
-  width: 100%
-  height: 100vh
-
-  .header-content
-    position: relative
-    top: -100vh
-
-  .cover-background
-    width: 100%
-    height: 100vh
+  header
+    height: 100vmin
 
 </style>
