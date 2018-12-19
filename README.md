@@ -1,9 +1,10 @@
 <div align='center'>
-  <img src='public/logo.png'>
-  <h1 class='repo-title'>felixluciano.github.io</h1>
-  <span>My humble personal github page</span>
+  <img src='public/readme-banner.jpg'>
 </div>
 <br/>
+
+## Check out
+##### [FelixLuciano.github.io](https://felixluciano.github.io)
 
 
 ## Build Setup
