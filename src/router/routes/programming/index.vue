@@ -19,7 +19,7 @@
 
             v-flex.pl-3(d-flex align-center)
               v-divider
-                
+
 
       v-flex.pt-5(xs12)
         transition(name='slide-y-reverse-transition' mode="out-in")
@@ -37,8 +37,9 @@
 
     methods:
       scrollTop: ->
-        @$vuetify.goTo window.innerHeight,
-          duration: 500
+        @$vuetify.goTo '#main-router-view',
+          duration: 1000
+          offset: -48
 
 </script>
 

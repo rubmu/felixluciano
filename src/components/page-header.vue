@@ -1,6 +1,6 @@
 <template lang='pug'>
 
-  header.grey.darken-4
+  header.grey.darken-4(:style='{height: windowHeight + "px"}')
     v-img(:src='coverSrc' :lazy-src='coverSrc' width='100%' height='100%')
 
       v-container(fill-height)
@@ -37,8 +37,14 @@ export default
 
   methods:
     scrollDown: ->
-      @$vuetify.goTo window.innerHeight,
+      @$vuetify.goTo '#main-router-view',
         duration: 1000
+        offset: -48
+
+
+  mounted: ->
+    addEventListener 'resize', ->
+      @windowHeight = window.innerHeight
 
 </script>
 
@@ -46,7 +52,5 @@ export default
 
 <style lang='sass'>
 
-  header
-    height: 100vmin
 
 </style>

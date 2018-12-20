@@ -40,9 +40,10 @@ export default
       @$vuetify.goTo 0,
         duration: 1000
 
-    scrollTop: (tabName) ->
-      @$vuetify.goTo window.innerHeight,
-        duration: 500
+    scrollTop: ->
+      @$vuetify.goTo '#main-router-view',
+        duration: 1000
+        offset: -48
 
 </script>
 

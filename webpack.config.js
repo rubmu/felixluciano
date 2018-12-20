@@ -29,6 +29,10 @@ module.exports = {
     filename: 'bundle.min.js'
   },
 
+  devServer: {
+    overlay: true
+  },
+
 
   plugins: [
     new MiniCssExtractPlugin({

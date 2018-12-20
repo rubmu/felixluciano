@@ -72,8 +72,9 @@ export default
       window.open url
 
     scrollTop: ->
-      @$vuetify.goTo window.innerHeight,
-      duration: 500
+      @$vuetify.goTo '#main-router-view',
+        duration: 1000
+        offset: -48
 
 
   mounted: ->
