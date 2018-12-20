@@ -1,23 +1,65 @@
+const path = require('path')
+
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+
 const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin')
-const MiniCssExtractPlugin  = require("mini-css-extract-plugin")
-const path = require('path');
+
+const MiniCssExtractPlugin  = require('mini-css-extract-plugin')
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
+
+
+const { NODE_ENV } = process.env
+const styleLoader = NODE_ENV !== 'production' ? 'vue-style-loader' : MiniCssExtractPlugin.loader
+
 
 module.exports = {
-  mode: process.env.NODE_ENV,
+
+  mode: NODE_ENV,
+
+
   entry: './src/main.coffee',
+
+
   output: {
     path: path.resolve(__dirname, './dist'),
+
     publicPath: '/dist/',
+
     filename: 'bundle.min.js'
   },
+
+
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: "bundle.min.css",
+    }),
+
+    new CompressionPlugin(),
+
+    new VueLoaderPlugin()
+  ],
+
+
+  optimization: {
+    minimizer: [
+      new TerserPlugin({
+        parallel: true
+      }),
+
+      new OptimizeCSSAssetsPlugin()
+    ]
+  },
+
+
   resolve: {
     extensions: ['.js', '.json', '.vue'],
     alias: {
       '@': path.resolve(__dirname, 'src/')
     }
   },
+
+
   module: {
     rules: [
       {
@@ -39,25 +81,16 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [
-          process.env.NODE_ENV !== 'production'
-            ? 'vue-style-loader'
-            : MiniCssExtractPlugin.loader,
-          'css-loader'
-        ]
+        use: [ styleLoader, 'css-loader' ]
       },
       {
         test: /\.scss$/,
-        use: [
-          'vue-style-loader',
-          'css-loader',
-          'sass-loader'
-        ],
+        use: [ styleLoader, 'css-loader', 'sass-loader' ],
       },
       {
         test: /\.sass$/,
         use: [
-          'vue-style-loader',
+          styleLoader,
           'css-loader',
           {
             loader: 'sass-loader',
@@ -79,20 +112,5 @@ module.exports = {
         }
       }
     ]
-  },
-  plugins: [
-    new MiniCssExtractPlugin({
-      filename: "[name].css",
-      chunkFilename: "[id].css"
-    }),
-    new CompressionPlugin(),
-    new VueLoaderPlugin()
-  ],
-  optimization: {
-    minimizer: [
-      new TerserPlugin({
-        parallel: true
-      })
-    ]
   }
-};
+}

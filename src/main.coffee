@@ -3,38 +3,10 @@ import App from './App.vue'
 
 
 import Vuetify, {
-  VApp,
-  VToolbar,
-  VToolbarItems,
-  VAvatar,
-  VDialog,
-  VDivider,
-  VExpansionPanel,
-  VExpansionPanelContent,
-  VHover,
-  VCard,
-  VCardTitle,
-  VCardActions,
-  VImg,
-  VIcon
-  VContainer,
-  VFlex,
-  VLayout,
-  VSpacer,
-  VPagination,
-  VProgressCircular,
-  VResponsive,
-  VTab,
-  VTabs,
-  VTabsItems,
-  VTabsSlider,
-  VWindow,
-  VWindowItem,
-  VFooter,
-  VBtn
+  VApp,  VToolbar, VToolbarItems, VAvatar, VDialog, VDivider, VExpansionPanel, VExpansionPanelContent,
+  VHover, VCard, VCardTitle, VCardActions, VImg, VIcon, VContainer, VFlex, VLayout, VSpacer, VBtn, VFooter,
+  VPagination, VProgressCircular, VResponsive, VTab,   VTabs, VTabsItems, VTabsSlider, VWindow, VWindowItem
 } from 'vuetify/lib'
-
-import { Ripple } from 'vuetify/lib/directives'
 
 import 'vuetify/dist/vuetify.min.css'
 
@@ -53,42 +25,13 @@ Vue.use Vuetify,
     expand: 'mdi-chevron-down'
 
   components: {
-    VApp
-    VToolbar
-    VToolbarItems
-    VAvatar
-    VDialog
-    VDivider
-    VExpansionPanel
-    VExpansionPanelContent
-    VHover
-    VCard
-    VCardTitle
-    VCardActions
-    VImg
-    VIcon
-    VContainer
-    VFlex
-    VLayout
-    VSpacer
-    VPagination
-    VProgressCircular
-    VResponsive
-    VTab
-    VTabs
-    VTabsItems
-    VTabsSlider
-    VWindow
-    VWindowItem
-    VFooter
-    VBtn
-  }
-  directives: {
-    Ripple
+    VApp,  VToolbar, VToolbarItems, VAvatar, VDialog, VDivider, VExpansionPanel, VExpansionPanelContent,
+    VHover, VCard, VCardTitle, VCardActions, VImg, VIcon, VContainer, VFlex, VLayout, VSpacer, VBtn, VFooter,
+    VPagination, VProgressCircular, VResponsive, VTab,   VTabs, VTabsItems, VTabsSlider, VWindow, VWindowItem
   }
 
 
 new Vue
   el: '#app'
-  render: (h) -> h(App)
+  render: (h) => h App
   router: router

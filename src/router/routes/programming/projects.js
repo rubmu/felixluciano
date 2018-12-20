@@ -16,13 +16,11 @@
     v-flex.pt-5.text-xs-center(xs12)
       v-pagination(color='primary' v-model='pagination' :length='pages.length' @input='scrollTop')
   //--
-</template>
-
-
+</template>;
 
 <script lang='coffee'>
 
-import { get } from 'axios'
+import {get} from 'axios'
 
 import projectCard from '@/components/project-card'
 
@@ -78,10 +76,8 @@ export default
   components:
     'project-card': projectCard
 
-</script>
-
-
+</script>;
 
 <style lang='sass'>
 
-</style>
+</style>;
