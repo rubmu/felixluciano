@@ -21,7 +21,7 @@
               v-divider
 
 
-      v-flex.pt-5(xs12)
+      v-flex(xs12 :class='{"pt-4": $vuetify.breakpoint.xsOnly, "pt-5": $vuetify.breakpoint.smAndUp}')
         transition(name='slide-y-reverse-transition' mode="out-in")
           router-view
   //--

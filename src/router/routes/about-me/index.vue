@@ -71,11 +71,15 @@
 
 
         v-flex(xs12)
-          v-layout(row wrap)
 
-            v-flex.text-xs-center.px-3.pb-4(xs6 sm3 md2 v-once v-for='pratice, index in pratices' :key='index')
-              v-img.ma-4(:asect-ratio='1/1' :src="'public/icons/' + pratice.icon" :lazy-src="'public/icons/' + pratice.icon")
-              .title.font-weight-bold {{ pratice.name }}
+          v-container.pa-0(fluid v-bind='{ [`grid-list-${$vuetify.breakpoint.name}`]: true }')
+            v-layout(row wrap)
+
+              template(v-for='pratice, index in pratices')
+                v-flex(xs4 sm3 md2)
+
+                  v-img(:asect-ratio='1/1' :src="'public/icons/' + pratice.icon" :lazy-src="'public/icons/' + pratice.icon" :class='{"ma-2": $vuetify.breakpoint.xsOnly, "mx-4 my-3": $vuetify.breakpoint.smAndUp}')
+                  .font-weight-bold.text-xs-center.pb-2(:class='{"body-2": $vuetify.breakpoint.xsOnly, "title": $vuetify.breakpoint.smAndUp}') {{ pratice.name }}
   //--
 </template>
 

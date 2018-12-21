@@ -6,11 +6,13 @@
       v-window(touchless v-model='window')
         v-window-item(lazy v-for='page, index in pages' :key='index')
 
-          v-layout(row wrap)
-            template(v-for='project in page')
+          v-container.pa-0(fluid grid-list-lg)
+            v-layout(row wrap)
 
-              v-flex.pa-2(xs12 md6)
-                project-card(:data='project')
+              template(v-for='project in page')
+                v-flex.pa-2(xs12 md6)
+                  
+                  project-card(:data='project')
 
 
     v-flex.pt-5.text-xs-center(xs12)

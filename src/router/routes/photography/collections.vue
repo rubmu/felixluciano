@@ -9,7 +9,7 @@
           v-layout(row wrap)
             template(v-for='collection in page')
 
-              v-flex.mb-5(xs12)
+              v-flex(xs12 :class='{"mb-3": $vuetify.breakpoint.xsOnly, "mb-4": $vuetify.breakpoint.smAndUp}')
                 collection(:data='collection' @click='openLightbox')
 
 

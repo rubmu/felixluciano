@@ -3,10 +3,10 @@
   v-dialog(lazy fullscreen v-model='data.showLightbox' transition='slide-y-reverse-transition')
     v-layout.lightbox--background-cover.pa-1(column fill-height @click='closeLightbox')
 
-      v-flex.py-2(xs12)
+      v-flex.py-2(d-flex)
         .lightbox--photo-container(:style='{"--photo": "url(" + data.src + ")"}')
 
-      v-flex.white--text.text-xs-center(xs1 d-flex align-center)
+      .white--text.text-xs-center(xs1 d-flex align-center)
         .caption.font-weight-bold COYRIGHT © 2018 LUCIANO FELIX - ALL RIGHTS RESERVED
           .caption Click anywhere to close
   //--
@@ -74,7 +74,6 @@ export default
 
   .lightbox--photo-container
     width: 100%
-    height: 100%
     background: center / contain no-repeat var(--photo)
     pointer-events: none
 

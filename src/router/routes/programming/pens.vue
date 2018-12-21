@@ -6,11 +6,13 @@
       v-window(touchless v-model='window')
         v-window-item(lazy v-for='page, index in pages' :key='index')
 
-          v-layout(row wrap)
-            template(v-for='pen in page')
+          v-container.pa-0(fluid grid-list-lg)
+            v-layout(row wrap)
 
-              v-flex.pa-2(xs12 md6)
-                photo(:data='pen' @click.native='openLink(pen.url)')
+              template(v-for='pen in page')
+                v-flex(xs12 md6)
+
+                  photo(:data='pen' @click.native='openLink(pen.url)')
 
 
     v-flex.pt-5.text-xs-center(xs12)

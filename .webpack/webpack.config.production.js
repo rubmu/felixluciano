@@ -1,48 +1,40 @@
-const path = require('path')
+'use strict'
 
-const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const Path = require('path')
 
-const TerserPlugin = require('terser-webpack-plugin');
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+
+const TerserPlugin = require('terser-webpack-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
-
 const MiniCssExtractPlugin  = require('mini-css-extract-plugin')
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
 
 
-const { NODE_ENV } = process.env
-const styleLoader = NODE_ENV !== 'production' ? 'vue-style-loader' : MiniCssExtractPlugin.loader
-
 
 module.exports = {
 
-  mode: NODE_ENV,
+  mode: 'production',
 
 
   entry: './src/main.coffee',
 
 
   output: {
-    path: path.resolve(__dirname, './dist'),
+    path: Path.resolve(__dirname, '../dist'),
 
     publicPath: '/dist/',
 
-    filename: 'bundle.min.js'
-  },
-
-  devServer: {
-    overlay: true
+    filename: 'main.bundle.js'
   },
 
 
-  plugins: [
-    new MiniCssExtractPlugin({
-      filename: "bundle.min.css",
-    }),
+  resolve: {
+    extensions: ['.js', '.json', '.vue'],
 
-    new CompressionPlugin(),
-
-    new VueLoaderPlugin()
-  ],
+    alias: {
+      '@': Path.resolve(__dirname, '../src/')
+    }
+  },
 
 
   optimization: {
@@ -56,12 +48,15 @@ module.exports = {
   },
 
 
-  resolve: {
-    extensions: ['.js', '.json', '.vue'],
-    alias: {
-      '@': path.resolve(__dirname, 'src/')
-    }
-  },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: "style.bundle.css",
+    }),
+
+    new CompressionPlugin(),
+
+    new VueLoaderPlugin()
+  ],
 
 
   module: {
@@ -84,17 +79,21 @@ module.exports = {
         loader: 'pug-plain-loader'
       },
       {
+        test: /\.styl$/,
+        loader: 'css-loader!stylus-loader?paths=node_modules/bootstrap-stylus/stylus/'
+      },
+      {
         test: /\.css$/,
-        use: [ styleLoader, 'css-loader' ]
+        use: [ MiniCssExtractPlugin.loader, 'css-loader' ]
       },
       {
         test: /\.scss$/,
-        use: [ styleLoader, 'css-loader', 'sass-loader' ],
+        use: [ MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader' ],
       },
       {
         test: /\.sass$/,
         use: [
-          styleLoader,
+          MiniCssExtractPlugin.loader,
           'css-loader',
           {
             loader: 'sass-loader',
@@ -102,11 +101,7 @@ module.exports = {
               indentedSyntax: true
             }
           }
-        ],
-      },
-      {
-        test: /\.styl$/,
-        loader: 'css-loader!stylus-loader?paths=node_modules/bootstrap-stylus/stylus/'
+        ]
       },
       {
         test: /\.(png|jpg|gif|svg)$/,

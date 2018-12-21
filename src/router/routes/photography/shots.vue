@@ -6,11 +6,13 @@
       v-window(touchless v-model='window')
         v-window-item(lazy v-for='page, index in pages' :key='index')
 
-          v-layout(row wrap)
-            template(v-for='shot in page')
+          v-container.pa-0(fluid grid-list-lg)
+            v-layout(row wrap)
 
-              v-flex.pa-2(xs12 sm6)
-                photo(:data='shot.thumb' @click.native='openLightbox(shot.photo)')
+              template(v-for='shot in page')
+                v-flex(xs12 sm6)
+
+                  photo(:data='shot.thumb' @click.native='openLightbox(shot.photo)')
 
 
     v-flex.pt-3.text-xs-center(xs12)
