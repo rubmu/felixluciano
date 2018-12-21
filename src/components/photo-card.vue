@@ -7,7 +7,7 @@
         v-layout(fill-height v-if='data.title && data.description')
 
           transition(name='slide-x-transition')
-            v-flex(sm5 md7 lg5 v-show='hover')
+            v-flex.pa-0(sm5 md7 lg5 v-show='hover')
 
               v-card(flat tile height='100%' color='grey lighten-5')
 

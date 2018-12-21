@@ -10,8 +10,8 @@
             v-layout(row wrap)
 
               template(v-for='project in page')
-                v-flex.pa-2(xs12 md6)
-                  
+                v-flex(xs12 md6)
+
                   project-card(:data='project')
 
 
