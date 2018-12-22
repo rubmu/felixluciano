@@ -4,7 +4,7 @@
     v-hover(v-if='$vuetify.breakpoint.smAndUp')
 
       .simple-photo--cover(:class="{'transparent': !hover}" slot-scope='{hover}')
-        v-layout(fill-height v-if='data.title && data.description')
+        v-layout.ma-0(fill-height v-if='data.title && data.description')
 
           transition(name='slide-x-transition')
             v-flex.pa-0(sm5 md7 lg5 v-show='hover')
