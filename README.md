@@ -1,5 +1,5 @@
 <div align='center'>
-  <img src='public/readme-banner.jpg'>
+  <img src='public/readme-banner.svg'>
 </div>
 <br/>
 

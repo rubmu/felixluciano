@@ -1,75 +1,65 @@
+'use strict'
+
+const Chalk = require('chalk')
+const Figlet = require('figlet')
+const Prompts = require('prompts')
 const { spawn } = require('child_process')
-const { camelCase } = require('lodash')
-const CrossEnv = require('cross-env')
-const List = require('prompt-list')
-const { say } = require('cfonts')
+
+const developmentProcess = require('./.webpack/dev-runner.js')
+const productionProcess = require('./.webpack/build-runner.js')
 
 
-const actions = {
-  startDevelopmentServer() {
-    const cmd = spawn('cmd', [
-      '/c',
-      'cross-env',
-      'NODE_ENV=development',
-      'webpack-dev-server',
-      '--inline',
-      '--open',
-      '--hot'
-    ])
+const projectName = process.env.npm_package_name.replace(/-/g, '\n')
+const projectDescription = process.env.npm_package_description
+const projectVersion = process.env.npm_package_version
 
-    cmd.stdout.on('data', data => console.log(`${data}`))
-  },
+const figletHeader = Figlet.textSync(projectName, {
+  font: 'Cybermedium',
+  horizontalLayout: 'default',
+  verticalLayout: 'default'
+})
 
 
-  runBuildProcess() {
-    const cmd = spawn('cmd', [
-      '/c',
-      'cross-env',
-      'NODE_ENV=production',
-      'webpack',
-      '--progress',
-      '--hide-modules'
-    ])
-
-    cmd.stdout.on('data', data => console.log(`${data}`))
-  },
-
-
-  leave() {
-    console.log('Leaving...')
-  }
-
+const leaveProcess = function() {
+  console.log(Chalk.yellow`Leaving...`)
+  setTimeout(console.clear, 2000)
 }
 
 
 
-const list = new List({
-  name: 'action',
-  message: 'Select an action',
-  choices: [
-    '1. Start development server\n',
-    '2. Run build process\n',
-    {name: Array(process.stdout.columns - 7).join(' '), disabled: '-'},
-    '3. Leave'
-  ]
-})
+const greeting = function() {
+  console.log(Chalk.greenBright(figletHeader))
+
+  console.log(Chalk.green(projectDescription))
+  console.log('Version:', Chalk.green(projectVersion), '\n\n')
+}
 
 
+const init = async function() {
 
-say(' felixluciano.github.io ', {
-  font: 'chrome',
-  align: 'left',
-  colors: ['cyan', 'cyan', 'cyan'],
-  background: 'whiteBright',
-  letterSpacing: 2,
-  lineHeight: 1,
-  maxLength: '0',
-  space: true
-})
+  console.clear()
+  greeting()
+
+  const { response } = await Prompts({
+    type: 'select',
+    name: 'response',
+    message: 'Select an action',
+    choices: [
+      {title: 'Start development server', value: developmentProcess},
+      {title: 'Run build process', value: productionProcess},
+      {title: ' ', value: leaveProcess, disabled: true},
+      {title: 'Leave', value: leaveProcess}
+    ]
+  })
 
 
-list.ask(option => {
-  const action = camelCase(option.replace(/[^a-zA-Z ]\W+/g, ''))
+  if(!response) return leaveProcess()
 
-  actions[action].call()
-})
+  console.clear()
+  greeting()
+
+  response.call()
+}
+
+
+init()

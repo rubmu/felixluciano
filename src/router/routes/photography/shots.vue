@@ -16,7 +16,7 @@
 
 
     v-flex.pt-3.text-xs-center(xs12)
-      v-pagination(color='primary' v-model='pagination' :length='pages.length' @input='scrollTop')
+      v-pagination(color='grey darken-4' v-model='pagination' :length='pages.length' @input='scrollTop')
 
     lightbox(:data='lightbox')
   //--

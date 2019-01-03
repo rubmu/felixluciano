@@ -36,19 +36,19 @@
             v-icon(color='primary') mdi-format-quote-open
 
             | Hi, my name is Luciano Felix Dias I'm {{ myAge }} and i live in
-            a.ml-1.font-weight-bold(:href='socialLinks.maps' target='_blank') São Paulo, Brazil
+            a.ml-1.text--primary(:href='socialLinks.maps' target='_blank') São Paulo, Brazil
             | .
             | Programming is one of my hobbies that I intend to take to a professional carreer, I understand that through it I have a medium of creation where I can express a little of what I think as in photography, currently practice only in the front-end and have a brief experience in hardware programming, so I have plans in long-term to expand my techniques and become professional.
             | And i love to photograph any kind of thing, especially small objects, and for each photo I try to explore some detail that makes it a photograph with something more than some simple record.
             br
             | On this page I will publish some of my creations, but if you prefer to follow me posting photos on
-            a.ml-1.font-weight-bold(:href='socialLinks.instagram' target='_blank') Instagram
+            a.ml-1.text--primary(:href='socialLinks.instagram' target='_blank') Instagram
             | , creating pens on
-            a.mx-1.font-weight-bold(:href='socialLinks.codepen' target='_blank') Codepen
+            a.mx-1.text--primary(:href='socialLinks.codepen' target='_blank') Codepen
             | or developing projects on
-            a.ml-1.font-weight-bold(:href='socialLinks.github' target='_blank') Github
+            a.ml-1.text--primary(:href='socialLinks.github' target='_blank') Github
             |, and if you want to contact me send me an
-            a.ml-1.font-weight-bold(:href='socialLinks.mail') email
+            a.ml-1.text--primary(:href='socialLinks.mail') email
             |.
 
             v-icon(color='primary') mdi-format-quote-close

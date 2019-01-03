@@ -16,8 +16,8 @@ import router from './router/index.coffee'
 
 Vue.use Vuetify,
   theme:
-    primary: '#673AB7'
-    accent: '#AA00FF'
+    primary: '#616161'
+    accent: '#BDBDBD'
 
   icons:
     next: 'mdi-chevron-right'

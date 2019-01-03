@@ -4,10 +4,10 @@
     v-toolbar(flat dark dense color='grey darken-4')
 
       v-btn.ma-0.pl-2.pr-3.hidden-xs-only.mx-2(flat @click='scrollToZero')
-        img(height='28' src='public/logo.svg')
+        img(height='28' src='public/brand/logo.svg')
 
         v-layout.ml-2(fill-height align-center)
-          img(height='20' src='public/typo.svg')
+          img(height='15' src='public/brand/logo-type.svg')
 
 
       v-btn.ma-0.pa-0.mx-2.hidden-sm-and-up(flat icon @click='scrollToZero')
@@ -20,7 +20,7 @@
       v-toolbar-items
         v-flex(d-flex align-center)
 
-          v-tabs(color='transparent' slider-color='primary')
+          v-tabs(color='transparent' slider-color='accent')
               v-tab(@click='scrollTop' to='/') About me
               v-tab(@click='scrollTop' to='/photography') Photography
               v-tab(@click='scrollTop' to='/programming') Programming

@@ -22,7 +22,7 @@
             v-layout(justify-center align-center)
 
               v-divider.mr-4
-              img(src='public/typo.svg' height='20')
+              img(src='public/brand/logo-type.svg' height='16')
               v-divider.ml-4
   //--
 </template>

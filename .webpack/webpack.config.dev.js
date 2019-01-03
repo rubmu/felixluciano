@@ -2,29 +2,45 @@
 
 const Path = require('path')
 
+const Webpack = require('webpack')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const MiniCssExtractPlugin  = require('mini-css-extract-plugin')
 
 
 
 module.exports = {
 
+  target: 'web',
+
+
   mode: 'development',
 
 
-  entry: './src/main.coffee',
+  entry: [
+    'webpack-hot-middleware/client?noInfo=true',
+    './src/main.coffee'
+  ],
 
 
   output: {
-    path: Path.resolve(__dirname, '../dist'),
+    path: Path.resolve(__dirname, '..', 'dist'),
 
-    publicPath: '/dist/',
+    publicPath: '/dist',
 
     filename: 'main.bundle.js'
   },
 
 
   plugins: [
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+
+    new Webpack.HotModuleReplacementPlugin(),
+
+    new Webpack.NoEmitOnErrorsPlugin(),
+
+    new MiniCssExtractPlugin({
+      filename: "style.bundle.css"
+    })
   ],
 
 
@@ -32,20 +48,21 @@ module.exports = {
     extensions: ['.js', '.json', '.vue'],
 
     alias: {
-      '@': Path.resolve(__dirname, '../src/')
+      '@': Path.resolve(__dirname, '..', 'src/')
     }
   },
 
 
   devServer: {
+    publicPath: '/dist',
     host: '0.0.0.0',
     useLocalIp: true,
     port: 8080,
 
+    hot: true,
     open: true,
     inline: true,
-    overlay: true,
-    stats: 'none'
+    logLevel: 'silent'
   },
 
 
@@ -74,16 +91,17 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [ 'vue-style-loader', 'css-loader' ]
+        use: [ 'vue-style-loader', MiniCssExtractPlugin.loader, 'css-loader' ]
       },
       {
         test: /\.scss$/,
-        use: [ 'vue-style-loader', 'css-loader', 'sass-loader' ],
+        use: [ 'vue-style-loader', MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader' ],
       },
       {
         test: /\.sass$/,
         use: [
           'vue-style-loader',
+          MiniCssExtractPlugin.loader,
           'css-loader',
           {
             loader: 'sass-loader',

@@ -28,6 +28,9 @@ module.exports = {
   },
 
 
+  stats: false,
+
+
   resolve: {
     extensions: ['.js', '.json', '.vue'],
 
@@ -50,7 +53,7 @@ module.exports = {
 
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "style.bundle.css",
+      filename: "style.bundle.css"
     }),
 
     new CompressionPlugin(),
