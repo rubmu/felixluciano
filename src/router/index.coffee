@@ -9,8 +9,6 @@ getRoute = (path) => require("@/router/routes/#{path}.vue").default
 
 export default new Router
 
-  mode: 'history'
-
   routes: [
       path: '/'
       name: 'Home'
